@@ -23,7 +23,18 @@ $file_ext = end(explode('.',$file_name)); // bierzemy rozszerzenie pliku
 $allowed = array('png','jpg','jpeg');
 
 if(in_array($file_ext,$allowed)){
- 
+    if($file_error === 0){
 
+
+
+
+
+    }
+    else{
+        echo "Error of uploud in the file";
+    }
+}
+else {
+    echo "Bad file extension";
 }
 ?>

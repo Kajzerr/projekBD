@@ -1,3 +1,21 @@
+<?php
+    include_once 'dbh_inc.php';
+
+        $res = pg_query($conn , "select photo_path from users where uid=10");
+        $photo = pg_fetch_row($res);
+
+        if(isset($_GET['login'])){
+      //       echo $_GET['login'];
+            $uid = $_GET['login'];
+            $uid = (int)$uid;
+            $res = pg_query($conn , "select * from users where uid=$uid");
+            $row = pg_fetch_row($res);
+
+     }
+
+        ?>
+
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -23,7 +41,10 @@
 					
 				<div id="zdjecie_i_zmiana">
 							
-					<div id="zdjecie" > <img src="img/avatar1.png" height="320" width="270" ></div>
+					<?php
+                    echo "<div id='zdjecie' > <img src='$row[9]' height='320' width='270'></div>"
+
+                    ?>
 					<div id="zdjecie" style="min-height:50px;text-align:center;">Zmień swoje dane</div>
 					<div > 
 						<div class="dane2">
@@ -40,7 +61,8 @@
 				
 				<div id="prawe_dane">
 					<div class="dane">
-						<input disabled type="text" value="Imię i Nazwisko">
+						<!--<input disabled type="text" value="Imię i Nazwisko">-->
+                        <?php echo "<label>$row[1]</label>"?>
 						<input disabled type="text" value="Stanowisko">
 						<input disabled type="text" value="Iasfdasdfxd">
 						<input disabled type="text" value="Sasfdassadfxd">

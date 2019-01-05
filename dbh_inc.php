@@ -1,7 +1,7 @@
 <?php
 session_start();
 $data_users=array();
-$conn = pg_connect("host=localhost dbname=postgres user=postgres password=ppasswd@01") or die("Connection error");
+$conn = pg_connect("host=localhost dbname=pawel user=postgres password=postgres") or die("Connection error");
 $res = pg_query($conn,'select * from users');
 if (pg_num_rows($res)>0){
     while ($row=pg_fetch_assoc($res)) {
@@ -13,4 +13,3 @@ if (pg_num_rows($res)>0){
     echo $d['name']." ".$d['last_name'];
 
 }*/
-?>

@@ -31,7 +31,7 @@ if(in_array($file_ext,$allowed)){
 
     }
     else{
-        echo "Error of uploud in the file";
+        echo "Error of uplouddd in the file";
     }
 }
 else {

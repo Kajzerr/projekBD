@@ -10,8 +10,11 @@
             $uid = (int)$uid;
             $res = pg_query($conn , "select * from users where uid=$uid");
             $row = pg_fetch_row($res);
-
-     }
+            $res_sector = pg_query($conn , "select s.sid,s.name from users u,sector s where s.sid=u.sid and uid=$uid");
+            $row_sector = pg_fetch_row($res_sector);
+            $res_lok = pg_query($conn , "select l.lid,country,city from location l,users u where l.lid=u.lid and uid=$uid");
+            $row_lok = pg_fetch_row($res_lok);
+        }
 
         ?>
 
@@ -35,55 +38,39 @@
 				<div style="clear:both;">  </div>
 			</div>
 						
-			<div id="narzedzia">xxd</div>
+			<div id="nawigacja">
+                <div class="odnosniki">Panel Administracyjny</div>
+                <div class="odnosniki">Zmień Swoje Dane</div>
+                <div class="odnosniki">Wyszukaj Pracownika</div>
+                <div style="clear:both;">  </div>
+            </div>
 					
 			<div id="srodek">
-					
-				<div id="zdjecie_i_zmiana">
-							
+				<div id="zdjecie">
 					<?php
-                    echo "<div id='zdjecie' > <img src='$row[9]' height='320' width='270'></div>"
-
+                    echo "<img src='$row[9]' height='390' width='300'>"
                     ?>
-					<div id="zdjecie" style="min-height:50px;text-align:center;">Zmień swoje dane</div>
-					<div > 
-						<div class="dane2">
-							<input disabled type="text" value="Zmień" style="width: 160px;margin-top:20px;">
-						</div>
-						
-						<div class="dane2">
-							<input disabled type="text" value="Pokój"  style="width: 200px;margin-top:20px;">		
-						</div>
-						
-						<div style="clear:both;">  </div>
-					</div>
 				</div>
 				
 				<div id="prawe_dane">
-					<div class="dane">
-						<!--<input disabled type="text" value="Imię i Nazwisko">-->
-                        <?php echo "<label>$row[1]</label>"?>
-						<input disabled type="text" value="Stanowisko">
-						<input disabled type="text" value="Iasfdasdfxd">
-						<input disabled type="text" value="Sasfdassadfxd">
+                    <div class="dane">
+                        <div class="dane_podzial"><?php echo "<h3>Imie i Nazwisko: </h3> <h2>$row[1] $row[2]"?></div>
+                        <div class="dane_podzial"><?php echo "</h2><h3>Stanowisko: </h3><h2>$row[5]</h2>"?></div>
+                        <div style="clear:both;">  </div>
 					</div>
 					<div class="dane">
-						<input disabled type="text" value="Lokalizacja">
-						<input disabled type="text" value="Pokój">
-						<input disabled type="text" value="Poasdfsdaasj">
-						<input disabled type="text" value="Stasadfasdfxd">
+                        <div class="dane_podzial"><?php echo "<h3>Telefon:</h3> <h2>$row[3]</h2>"?></div>
+                        <div class="dane_podzial"><?php echo "<h3>E-mail:</h3> <h2>$row[4]</h2>"?></div>
+                        <div style="clear:both;">  </div>
 					</div>
 					<div class="dane">
-						<input disabled type="text" value="Telefon">
-						<input disabled type="text" value="E-mail">
-						<input disabled type="text" value="sfadsdfsad">
-						<input disabled type="text" value="Stanowiskoxd">
+                        <div class="dane_podzial"><?php echo "<h3>Sektor:</h3> <h2>$row_sector[1]</h2>"?></div>
+                        <div class="dane_podzial"><?php echo "<h3>Lokalizacja:</h3> <h2>$row_lok[1],$row_lok[2]</h2>"?></div>
+                        <div style="clear:both;">  </div>
 					</div>
 				</div>
-				
-		</div>	
-		
-		<div  id="dol" style="clear:both;"></div>
+                <div  id="dol"></div>
+		</div>
 	</div>
 
 	

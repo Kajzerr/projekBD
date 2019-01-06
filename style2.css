@@ -13,7 +13,7 @@
 		#gora
 		{
 			margin-top: 20px;
-			min-height:390;
+			min-height:120px;
 		}
 		#logo
 		{
@@ -30,66 +30,53 @@
 			padding: 15px;
 			float: left;	
 		}
-		#narzedzia
-		{	
+		#nawigacja
+		{
+			background-color: #37b93d;
 			width:1500px;
-			font-size: 40px;
-			padding: 15px;
-			float: left;		
-		
-		}	
+			float: left;
+			min-height: 50px;
+		}
+		.odnosniki
+		{
+			width: 200px;
+			float: left;
+			text-align: center;
+			margin-top: 10px;
+		}
 		#srodek
 		{
 			width:1500px;
 		}
-		#zdjecie_i_zmiana
-		{
-			width: 580px;
-			min-height:450px;
-			float: left;
-			padding: 15px;
-		}		
 		#zdjecie
 		{
-			font-size:25px;
-			padding: 10px;
+			float: left;
+			width: 400px;
+			min-height:450px;
+			padding: 15px;
 		}
 		#prawe_dane
 		{
-			width: 860px;
-			min-height:450px;
 			float: left;
-			padding: 15px;				
+			width: 1040px;
+			min-height:450px;
 		}
 		.dane
 		{
 			min-height:160px;
-			padding: 20px;	
-			
+			padding: 15px;
+
 		}
-		.dane2
+		.dane_podzial
 		{
-			min-height:185px;
 			float: left;
+			width: 40%;
 		}
-		
 		#dol
 		{
 			border-top-style:dotted;
 			width:1500px;
 			min-height:100px;
-			padding: 15px;			
-		}
-		input[type=text]
-		{
-			width: 270px;
-		    text-align:center;
-			border-radius: 5px;
-			font-size: 20px;
-			padding: 10px;
-			box-sizing: border-box;
-			margin-top: 15px;
-			letter-spacing: 2px;
-			margin-right:70px;
-			margin-left:40px;
+			padding: 15px;
+			clear:both;
 		}

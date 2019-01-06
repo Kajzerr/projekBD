@@ -32,6 +32,12 @@ if (pg_num_rows($res)>0){
         {
             text-align: center;
         }
+        #main
+        {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         label
         {
             width: 15%;
@@ -55,9 +61,9 @@ if (pg_num_rows($res)>0){
         <h1>Adminitrator Page</h1>
     </section>
     <section>
-        <div>
-            <h3>Add User</h3>
-            <form  action="add_user.php" method="POST" enctype="multipart/form-data"> <!-- enc zeby mozna bylo dodawac zdjecia-->
+        <div id="main">
+            <h1>Add User</h1>
+           <form  action="add_user.php" method="POST" enctype="multipart/form-data"> <!-- enc zeby mozna bylo dodawac zdjecia-->
            <label>Name</label><input type="text" name="name" required>
            <label>Last Name</label><input type="text" name="last_name" required> <br>
            <label>Phone Number</label><input type="text" name="phone" required>
@@ -76,11 +82,39 @@ if (pg_num_rows($res)>0){
                         echo "<option>$d[0],$d[1]</option>"
                     ?>
                 </select><br>
-            <label>Photo</label><input type="file" name="photo">
+            <label>Photo</label><input type="file" name="photo"><br>
                 <button class="btn-primary btn" type="submit" name="submit">
                     Send
                 </button>
             </form>
+            <h1>Add Location</h1>
+            <form  action="add_location.php" method="POST" enctype="multipart/form-data">
+                <label>Country</label><input type="text" name="country" required>
+                <label>City</label><input type="text" name="city" required> <br>
+                <label>Street</label><input type="text" name="street" required>
+                <label>Postal</label><input type="text" name="postal" required>   <br>
+                <label>Street Number</label><input type="text" name="st_number" required><br>
+                <button class="btn-primary btn" type="submit" name="submit">
+                    Send
+                </button>
+            </form>
+            <h1>Delete User</h1>
+            <form  action="delete_user.php" method="POST" enctype="multipart/form-data">
+                <label>UID</label><input type="text" name="uid" required>
+                <button class="btn-primary btn" type="submit" name="submit">
+                    Send
+                </button>
+            </form>
+            <h1>Delete Location</h1>
+            <form  action="delete_location.php" method="POST" enctype="multipart/form-data">
+                <label>LID</label><input type="text" name="lid" required>
+                <button class="btn-primary btn" type="submit" name="submit">
+                    Send
+                </button>
+            </form>
+
+
+
         </div>
 
 

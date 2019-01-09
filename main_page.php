@@ -4,18 +4,16 @@
         $res = pg_query($conn , "select photo_path from users where uid=10");
         $photo = pg_fetch_row($res);
 
-        if(isset($_GET['login'])){
-      //       echo $_GET['login'];
-            $uid = $_GET['login'];
-            $uid = (int)$uid;
-            $res = pg_query($conn , "select * from users where uid=$uid");
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $res = pg_query($conn , "select * from users where safe_id='$id'");
             $row = pg_fetch_row($res);
+            $uid = $row[0];
             $res_sector = pg_query($conn , "select s.sid,s.name from users u,sector s where s.sid=u.sid and uid=$uid");
             $row_sector = pg_fetch_row($res_sector);
             $res_lok = pg_query($conn , "select l.lid,country,city from location l,users u where l.lid=u.lid and uid=$uid");
             $row_lok = pg_fetch_row($res_lok);
         }
-
         ?>
 
 
@@ -26,7 +24,6 @@
 	<title>NETITCOM</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<link rel="stylesheet" href="style2.css" type="text/css" />
-		
 </head>
 
 <body>
@@ -39,9 +36,12 @@
 			</div>
 						
 			<div id="nawigacja">
-                <div class="odnosniki">Panel Administracyjny</div>
-                <div class="odnosniki">Zmień Swoje Dane</div>
-                <div class="odnosniki">Wyszukaj Pracownika</div>
+                    <div class="odnosniki">Zmień Swoje Dane</div>
+                    <div class="odnosniki">Wyszukaj Pracownika</div>
+                <?php if($row[10]) {
+                    echo '<div class="odnosniki">Panel Administracyjny</div>';
+                    }
+                 ?>
                 <div style="clear:both;">  </div>
             </div>
 					
@@ -70,7 +70,7 @@
 					</div>
 				</div>
                 <div  id="dol"></div>
-		</div>
+		    </div>
 	</div>
 
 	

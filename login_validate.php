@@ -6,19 +6,21 @@
 
     $sql ="select * from login where username='$login'";
     $res =pg_query($conn,$sql);
-    $res_login_check = pg_num_rows($res);
-    echo $res_login_check;
-    echo $login;
-
+    $res_login_check = pg_num_rows($res);                       // liczba zwroconych wierszy
 
     if($res_login_check==1){
         $login_result = pg_fetch_assoc($res);
         if($password==$login_result['password']){
-            $_SESSION['username']=$login;
-            $_SESSION['password']=$password;
-            $_SESSION['uid']=$login_result['uid'];
             $xd = $login_result['uid'];
-            header("Location:main_page.php?login=$xd");
+            $sql ="select * from users where uid=$xd";
+            $res =pg_query($conn,$sql);
+            $result = pg_fetch_assoc($res);
+            $xd = $result['safe_id'];
+                $_SESSION['username']=$login;
+                $_SESSION['password']=$password;
+                $_SESSION['uid']=$login_result['uid'];
+                $_SESSION['safe_id']=$result['safe_id'];
+            header("Location:main_page.php?id=$xd");
             exit();
         }
         else{
@@ -26,7 +28,6 @@
         }
     }
     else{
-
         header('Location:index.php?login=error');
         exit();
     }

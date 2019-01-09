@@ -32,17 +32,23 @@
 		}
 		#nawigacja
 		{
-			background-color: #37b93d;
 			width:1500px;
 			float: left;
-			min-height: 50px;
+			min-height: 100px;
 		}
 		.odnosniki
 		{
-			width: 200px;
+			width: 300px;
 			float: left;
 			text-align: center;
 			margin-top: 10px;
+			font-size: 30px;
+			border-style: solid ;
+			margin-right: 30px;
+		}
+		.odnosniki:hover
+		{
+			background-color: #bbbbbb;
 		}
 		#srodek
 		{

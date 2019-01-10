@@ -13,10 +13,10 @@ if(isset($_SESSION['safe_id'])){
         $res = pg_query($conn,"update users set last_name=$chlast_name where safe_id=$id; ");
     }
     if ($chphone != ""){
-        echo "NULL";
+        $res = pg_query($conn,"update users set phone='$chphone' where safe_id=$id; ");
     }
     if ($chemail != ""){
-        echo "NULL";
+        $res = pg_query($conn,"update users set email='$chemail' where safe_id=$id; ");
     }
     if ($chposition != ""){
         echo "NULL";

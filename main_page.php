@@ -1,6 +1,5 @@
 <?php
     include_once 'dbh_inc.php';
-
         $res = pg_query($conn , "select photo_path from users where uid=10");
         $photo = pg_fetch_row($res);
 
@@ -36,10 +35,10 @@
 			</div>
 						
 			<div id="nawigacja">
-                    <div class="odnosniki">Zmień Swoje Dane</div>
-                    <div class="odnosniki">Wyszukaj Pracownika</div>
+                <a href="change_data_page.php"> <div class="odnosniki">Zmień Swoje Dane</div></a>
+                <a href="find.php"><div class="odnosniki">Wyszukaj Pracownika</div></a>
                 <?php if($row[10]) {
-                    echo '<div class="odnosniki">Panel Administracyjny</div>';
+                    echo '<a href="admin.php"> <div class="odnosniki">Panel Administracyjny</div></a>';
                     }
                  ?>
                 <div style="clear:both;">  </div>

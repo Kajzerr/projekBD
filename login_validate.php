@@ -16,9 +16,7 @@
             $res =pg_query($conn,$sql);
             $result = pg_fetch_assoc($res);
             $xd = $result['safe_id'];
-                $_SESSION['username']=$login;
-                $_SESSION['password']=$password;
-                $_SESSION['uid']=$login_result['uid'];
+                session_start();
                 $_SESSION['safe_id']=$result['safe_id'];
             header("Location:main_page.php?id=$xd");
             exit();

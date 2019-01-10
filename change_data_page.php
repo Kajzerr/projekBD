@@ -51,25 +51,15 @@ if (pg_num_rows($res)>0){
 
 <body>
 	<div id="container">
-	
-			<div id="gora" >
-				<div id="logo"> NETITCOM </div>
-				<div id="Who"> Jesteś zalogowany jako: </div>
-				<div style="clear:both;">  </div>
-			</div>
+
 						
 			<div id="nawigacja">
-                <div class="odnosniki">Zmień Swoje Dane</div>
-                <div class="odnosniki">Wyszukaj Pracownika</div>
-                <?php if($row[10]) {
-                    echo '<div class="odnosniki">Panel Administracyjny</div>';
-                    }
-                 ?>
-                <div style="clear:both;">  </div>
+                <a href="main_page.php"><div class="odnosniki" style="width:400px; ">Powrót do strony głównej</div></a>
             </div>
 					
 			<div id="srodek">
                 <h1>Zmiana Danych Użytkownika</h1>
+                <h3>Wypełnij pola danych które chcesz zmienić</h3>
                 <form  action="change_data.php" method="POST" enctype="multipart/form-data"> <!-- enc zeby mozna bylo dodawac zdjecia-->
                     <label>Last Name</label><input type="text" name="chlast_name" > <br>
                     <label>Phone Number</label><input type="text" name="chphone" > <br>

@@ -1,11 +1,5 @@
 create sequence user_sec increment 1 start 1;
 create sequence loc_sec increment 1 start 1;
-create sequence sect_sec increment 1 start 1;
-
-create table sector(
-sid int primary key default nextval('sect_sec'),
-name text unique
-);
 
 create table location(
 lid int primary key default nextval('loc_sec'),
@@ -13,7 +7,7 @@ country text,
 city text,
 postal text,
 street text,
-street_number int
+building_number int
 );
 
 create table users(
@@ -25,7 +19,7 @@ email text unique,
 position text,
 age int,
 lid int references location(lid) on delete cascade,
-sid int references sector(sid) on delete cascade,
+sector text,
 photo_path text,
 is_admin int,
 check(name ~'[A-Z][a-z]*'),
@@ -41,8 +35,8 @@ password text
 
 
 
-insert into location (country,city,postal,street,street_number) values ('POL','Cra','asdf','KONo',344);
-insert into location (country,city,postal,street,street_number) values ('USA','asdf','asdf','mariana',33);
+insert into location (country,city,postal,street,building_number) values ('Polska','Warszawa','22-445','Jana Pawla II',34);
+insert into location (country,city,postal,street,building_number) values ('USA','New York','34-534','44',23);
 
 insert into sector(name) values('IT');
 insert into sector(name) values('HR');
@@ -50,7 +44,7 @@ insert into sector(name) values('ADM');
 insert into sector(name) values('SALES');
 
 
-insert into users (name,last_name,phone,email,position,age,lid,sid,photo_path) values ('Asdf','asdsda','324567','asdfsd','asdfsd',33,1,2,'asdf');
-insert into users (name,last_name,phone,email,position,age,lid,sid,photo_path) values ('Asdfdf','asdsda','323247','asd323fsd','asdfsd',33,1,2,'asdf');
+insert into users (name,last_name,phone,email,position,age,lid,sector,photo_path) values ('Asdf','asdsda','324567','asdfsd','asdfsd',33,1,2,'asdf');
+insert into users (name,last_name,phone,email,position,age,lid,sector,photo_path) values ('Asdfdf','asdsda','323247','asd323fsd','asdfsd',33,1,2,'asdf');
 
 insert into login values(3,'PM','asdf');

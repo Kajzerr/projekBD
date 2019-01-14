@@ -33,18 +33,12 @@ username text unique,
 password text
 );
 
-
-
 insert into location (country,city,postal,street,building_number) values ('Polska','Warszawa','22-445','Jana Pawla II',34);
 insert into location (country,city,postal,street,building_number) values ('USA','New York','34-534','44',23);
 
-insert into sector(name) values('IT');
-insert into sector(name) values('HR');
-insert into sector(name) values('ADM');
-insert into sector(name) values('SALES');
 
+insert into users (name,last_name,phone,email,position,age,lid,sector,photo_path) values ('Asdf','asdsda','324567','asdfsd','asdfsd',33,1,'IT','asdf');
+insert into users (name,last_name,phone,email,position,age,lid,sector,photo_path) values ('Asdfdf','asdsda','323247','asd323fsd','asdfsd',33,1,'HR','asdf');
 
-insert into users (name,last_name,phone,email,position,age,lid,sector,photo_path) values ('Asdf','asdsda','324567','asdfsd','asdfsd',33,1,2,'asdf');
-insert into users (name,last_name,phone,email,position,age,lid,sector,photo_path) values ('Asdfdf','asdsda','323247','asd323fsd','asdfsd',33,1,2,'asdf');
-
-insert into login values(3,'PM','asdf');
+insert into login values(1,'admin','asdf');
+insert into login values(2,'user','asdf');

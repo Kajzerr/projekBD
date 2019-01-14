@@ -2,12 +2,6 @@
 include_once 'dbh_inc.php';
 $data_location=array();
 $data_sector=array();
-$res = pg_query($conn,'select * from sector');
-if (pg_num_rows($res)>0){
-    while ($row=pg_fetch_row($res)) {
-        $data_sector[]=$row;
-    }
-}
 $res = pg_query($conn,'select * from location');
 if (pg_num_rows($res)>0){
     while ($row=pg_fetch_row($res)) {
@@ -76,12 +70,7 @@ if (pg_num_rows($res)>0){
                             echo "<option>$d[0],$d[1],$d[2]</option>"
                     ?>
                 </select>
-           <label>Sector</label><select name="sector">
-                    <?php
-                    foreach ($data_sector as $d)
-                        echo "<option>$d[0],$d[1]</option>"
-                    ?>
-                </select><br>
+            <label>Sector</label><input type="text" name="sector" required><br>
             <label>Photo</label><input type="file" name="photo"><br>
                 <button class="btn-primary btn" type="submit" name="submit">
                     Send

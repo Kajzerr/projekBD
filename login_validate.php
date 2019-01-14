@@ -12,13 +12,9 @@
         $login_result = pg_fetch_assoc($res);
         if($password==$login_result['password']){
             $xd = $login_result['uid'];
-            $sql ="select * from users where uid=$xd";
-            $res =pg_query($conn,$sql);
-            $result = pg_fetch_assoc($res);
-            $xd = $result['safe_id'];
                 session_start();
-                $_SESSION['safe_id']=$result['safe_id'];
-            header("Location:main_page.php?id=$xd");
+                $_SESSION['uid']=$xd;
+            header("Location:main_page.php");
             exit();
         }
         else{

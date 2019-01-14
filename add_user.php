@@ -15,7 +15,6 @@ $location = pg_escape_string($_POST['location']);
 $sector = pg_escape_string($_POST['sector']);
 
 $lid_array = explode(",",$location);
-$sid_array = explode(",",$sector);
 
 $file = $_FILES['photo'];                                           // zmienne plikowe
 $file_name = $_FILES['photo']['name'];
@@ -48,13 +47,19 @@ if(in_array($file_ext,$allowed)){                                   // sprawdzen
        $file_destination = 'uploads/'.$file_new_name;
        move_uploaded_file($file_tmp_name,$file_destination);        // umieszczenie pliku w folderze uploads
 
-       $insert = "insert into users(name,last_name,phone,email,position,age,lid,sid,photo_path) 
-        values ('$name' , '$last_name' , '$phone' , '$email' , '$position' , $age , $lid_array[0] , $sid_array[0] , '$file_destination')";
+       $insert = "insert into users(name,last_name,phone,email,position,age,lid,sector,photo_path,is_admin) 
+        values ('$name' , '$last_name' , '$phone' , '$email' , '$position' , $age , $lid_array[0] , '$sector' , '$file_destination',1)";
         if(pg_query($conn,$insert)){
             echo "OK";
             $new_uid_int = (int)$new_uid;
             $login = $last_name.$name[0];
-            $passwd = bin2hex(random_bytes(5));                                   // losowanie hasla
+
+            $passwd ='';
+            for ($i=1; $i <=7; $i++){
+                $znak = rand(0,9);
+                $passwd = $passwd.$znak;
+            }
+            // losowanie hasla
             $insert ="insert into login values('$new_uid_int','$login','$passwd')";     // wpisanie danych logowania do bazy
             if(pg_query($conn,$insert)){
                 echo "OK";

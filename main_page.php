@@ -3,14 +3,11 @@
         $res = pg_query($conn , "select photo_path from users where uid=10");
         $photo = pg_fetch_row($res);
 
-        if(isset($_GET['id'])){
-            $id = $_GET['id'];
-            $res = pg_query($conn , "select * from users where safe_id='$id'");
+        if(isset($_SESSION['uid'])){
+            $id = $_SESSION['uid'];
+            $res = pg_query($conn , "select * from users where uid='$id'");
             $row = pg_fetch_row($res);
-            $uid = $row[0];
-            $res_sector = pg_query($conn , "select s.sid,s.name from users u,sector s where s.sid=u.sid and uid=$uid");
-            $row_sector = pg_fetch_row($res_sector);
-            $res_lok = pg_query($conn , "select l.lid,country,city from location l,users u where l.lid=u.lid and uid=$uid");
+            $res_lok = pg_query($conn , "select l.lid,country,city from location l,users u where l.lid=u.lid and uid=$id");
             $row_lok = pg_fetch_row($res_lok);
         }
         ?>
@@ -63,7 +60,7 @@
                         <div style="clear:both;">  </div>
 					</div>
 					<div class="dane">
-                        <div class="dane_podzial"><?php echo "<h3>Sektor:</h3> <h2>$row_sector[1]</h2>"?></div>
+                        <div class="dane_podzial"><?php echo "<h3>Sektor:</h3> <h2>$row[8]</h2>"?></div>
                         <div class="dane_podzial"><?php echo "<h3>Lokalizacja:</h3> <h2>$row_lok[1],$row_lok[2]</h2>"?></div>
                         <div style="clear:both;">  </div>
 					</div>
